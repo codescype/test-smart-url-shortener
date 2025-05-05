@@ -1,0 +1,25 @@
+{
+  "name": "@test-smart-url-shortener/server-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "@test-smart-url-shortener/server"
+    ],
+    "targets": {
+      "e2e": {
+        "executor": "@nx/jest:jest",
+        "outputs": [
+          "{projectRoot}/test-output/jest/coverage"
+        ],
+        "options": {
+          "jestConfig": "apps/server-e2e/jest.config.ts",
+          "passWithNoTests": true
+        },
+        "dependsOn": [
+          "@test-smart-url-shortener/server:build"
+        ]
+      }
+    }
+  }
+}
