@@ -1,12 +1,16 @@
-import { execSync } from 'child_process';
-import { join } from 'path';
+import axios from 'axios';
 
-describe('CLI tests', () => {
-  it('should print a message', () => {
-    const cliPath = join(process.cwd(), 'apps/server/dist');
+import { hostname, port } from '@tsus/shared-lib/server/config';
 
-    const output = execSync(`node ${cliPath}`).toString();
+describe('Elysia Server API tests', () => {
+  // Set the base URL for the server
+  const baseUrl = `http://${hostname}:${port}`;
 
-    expect(output).toMatch(/Hello World/);
+  it('should return a message from the root API', async () => {
+
+    const response = await axios.get(`${baseUrl}/`);
+
+    expect(response.status).toBe(200);
+    expect(response.data).toBe('Hello From the Server!');
   });
 });
