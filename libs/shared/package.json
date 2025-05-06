@@ -1,5 +1,5 @@
 {
-  "name": "@tsus/shared-lib",
+  "name": "@test-smart-url-shortener/shared",
   "version": "0.0.1",
   "private": true,
   "type": "commonjs",
@@ -31,7 +31,10 @@
         "options": {
           "outputPath": "libs/shared/dist",
           "tsConfig": "libs/shared/tsconfig.lib.json",
-          "main": "libs/shared/src/index.ts"
+          "main": "libs/shared/src/index.ts",
+          "assets": [
+            "libs/shared/src/**/tsconfig.*.json"
+          ]
         }
       }
     }
