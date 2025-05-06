@@ -4,10 +4,13 @@
   "files": [],
   "references": [
     {
+      "path": "./apps/server"
+    },
+    {
       "path": "./apps/server-e2e"
     },
     {
-      "path": "./apps/server"
+      "path": "./libs/shared"
     }
   ]
 }
