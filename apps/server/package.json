@@ -65,7 +65,10 @@
           "passWithNoTests": true
         }
       }
-    }
+    },
+    "implicitDependencies": [
+      "@test-smart-url-shortener/server"
+    ]
   },
   "dependencies": {
     "@elysiajs/cors": "1.2.0",
