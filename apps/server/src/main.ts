@@ -4,6 +4,8 @@ import { swagger } from '@elysiajs/swagger';
 import { node } from '@elysiajs/node';
 import 'dotenv/config';
 
+import routes from './routes/index';
+
 // Setup the Elysia server
 const app = new Elysia({ adapter: node() });
 
@@ -13,12 +15,7 @@ app.use(cors());
 // Add Swagger middleware for API documentation
 app.use(swagger());
 
-app
-  .onError(({ error }) => {
-    // @ts-expect-error Response is not a valid type
-    new Response(error.toString());
-  })
-  .get('/', () => 'Hello From the Server!');
+app.use(routes);
 
 // Set the host name for the server
 const hostname = process.env.SERVER_APP_HOST ?? '127.0.0.1';
