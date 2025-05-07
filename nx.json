@@ -42,6 +42,16 @@
         "targetName": "test"
       },
       "exclude": ["apps/server-e2e/**/*"]
+    },
+    {
+      "plugin": "@nx/js/typescript",
+      "include": ["libs/shared/*"],
+      "options": {
+        "typecheck": {
+          "targetName": "typecheck"
+        }
+      },
+      "exclude": ["libs/shared/*"]
     }
   ],
   "targetDefaults": {

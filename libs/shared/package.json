@@ -1,43 +1,23 @@
 {
-  "name": "@test-smart-url-shortener/shared",
+  "name": "@tsus/shared-lib",
   "version": "0.0.1",
   "private": true,
-  "type": "commonjs",
-  "main": "./dist/cjs/index.cjs.js",
-  "module": "./dist/esm/index.esm.js",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./src/index.ts",
   "types": "./dist/index.d.ts",
   "exports": {
+    "./package.json": "./package.json",
     ".": {
-      "require": "./dist/cjs/index.cjs.js",
-      "import": "./dist/esm/index.esm.js",
-      "types": "./src/index.ts"
+      "development": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     },
-    "./server/config": {
-      "require": "./dist/cjs/server/config.cjs.js",
-      "import": "./dist/esm/server/config.esm.js",
-      "types": "./src/server/config.ts"
-    },
-    "./package.json": "./package.json"
+    "./*": "./src/*"
   },
-  "scripts": {
-    "build:cjs": "tsc --project tsconfig.cjs.json",
-    "build:esm": "tsc --project tsconfig.esm.json",
-    "build": "pnpm run build:cjs && npm run build:esm"
-  },
-  "nx": {
-    "targets": {
-      "build": {
-        "executor": "@nx/js:tsc",
-        "options": {
-          "outputPath": "libs/shared/dist",
-          "tsConfig": "libs/shared/tsconfig.lib.json",
-          "main": "libs/shared/src/index.ts",
-          "assets": [
-            "libs/shared/src/**/tsconfig.*.json"
-          ]
-        }
-      }
-    }
+  "engines": {
+    "node": ">=v22.15.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

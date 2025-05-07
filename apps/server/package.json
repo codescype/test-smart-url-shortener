@@ -2,6 +2,10 @@
   "name": "@test-smart-url-shortener/server",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "tsx src/main.ts"
+  },
   "nx": {
     "targets": {
       "build": {
@@ -41,25 +45,6 @@
           }
         }
       },
-      "serve": {
-        "executor": "@nx/js:node",
-        "defaultConfiguration": "development",
-        "dependsOn": [
-          "build"
-        ],
-        "options": {
-          "buildTarget": "@test-smart-url-shortener/server:build",
-          "runBuildTargetDependencies": false
-        },
-        "configurations": {
-          "development": {
-            "buildTarget": "@test-smart-url-shortener/server:build:development"
-          },
-          "production": {
-            "buildTarget": "@test-smart-url-shortener/server:build:production"
-          }
-        }
-      },
       "test": {
         "options": {
           "passWithNoTests": true
@@ -75,6 +60,11 @@
     "@elysiajs/node": "^1.2.6",
     "@elysiajs/swagger": "1.2.2",
     "bun-types": "^1.2.12",
-    "elysia": "1.2.25"
+    "elysia": "1.2.25",
+    "supertest": "^7.1.0",
+    "ts-jest": "^29.1.0"
+  },
+  "engines": {
+    "node": ">=v22.15.0"
   }
 }

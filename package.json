@@ -29,6 +29,7 @@
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
     "tslib": "^2.3.0",
+    "tsx": "^4.19.4",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.19.0"
   },
@@ -36,5 +37,8 @@
   "dependencies": {
     "axios": "^1.6.0",
     "dotenv": "^16.5.0"
+  },
+  "engines": {
+    "node": ">=v22.15.0"
   }
 }

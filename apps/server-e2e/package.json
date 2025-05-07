@@ -2,6 +2,7 @@
   "name": "@test-smart-url-shortener/server-e2e",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "nx": {
     "implicitDependencies": [
       "@test-smart-url-shortener/server"
@@ -21,5 +22,8 @@
         ]
       }
     }
+  },
+  "engines": {
+    "node": ">=v22.15.0"
   }
 }

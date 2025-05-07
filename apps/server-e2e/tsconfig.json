@@ -10,7 +10,7 @@
   "include": ["jest.config.ts", "src/**/*.ts"],
   "references": [
     {
-      "path": "../../libs/shared"
+      "path": "../../libs/shared/"
     }
   ]
 }
