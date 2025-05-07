@@ -6,7 +6,7 @@
       "request": "launch",
       "name": "Debug Server",
       "runtimeExecutable": "pnpm",
-      "args": ["nx", "run", "server:serve:development"],
+      "args": ["nx", "run", "server:serve:development", "--preserve-symlinks"],
       "cwd": "${workspaceFolder}",
       "console": "internalConsole",
       "internalConsoleOptions": "openOnSessionStart",
