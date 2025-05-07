@@ -1,9 +1,10 @@
 import { Elysia } from 'elysia';
-import apiRoutes from './api';
+import apiRoutes from './api.js';
 
 const routes = new Elysia()
   .onError(({ error }) => {
-    new Response(error.toString());
+    // @ts-expect-error type not found
+    return new Response(error.toString());
   })
   .use(apiRoutes)
   .get('/', () => 'Hello From the Server!');

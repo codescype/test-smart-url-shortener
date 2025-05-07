@@ -4,7 +4,9 @@ import { swagger } from '@elysiajs/swagger';
 import { node } from '@elysiajs/node';
 import 'dotenv/config';
 
-import routes from './routes/index';
+import routes from './routes/index.js';
+
+import { hostname, port } from '@tsus/shared-lib';
 
 // Setup the Elysia server
 const app = new Elysia({ adapter: node() });
@@ -17,15 +19,10 @@ app.use(swagger());
 
 app.use(routes);
 
-// Set the host name for the server
-const hostname = process.env.SERVER_APP_HOST ?? '127.0.0.1';
-// Set the port for the server to listen on
-const port = process.env.SERVER_APP_PORT ?? 3001;
-
 // listen for incoming requests
 app.listen({ hostname, port }, (server) => {
   // Log the server URL to the console
   console.log(`🦊 Server is running at ${server.hostname}:${server.port}`);
 });
 
-export default app;
+export type App = typeof app;
