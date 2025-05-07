@@ -1,13 +1,11 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "./../../tsconfig.base.json",
   "compilerOptions": {
-    "module": "NodeNext",
-    "outDir": "dist",
-    "types": ["node"],
-    "rootDir": "src",
+    "rootDir": "./src",
+    "outDir": "./dist",
     "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo"
   },
-  "include": ["./src/**/*.{ts,js}", "../../libs/shared/src/**/*.{ts,js}"],
+  "include": ["./src/**/*.ts", "./../../libs/shared/src/**/*.ts"],
   "exclude": [
     "out-tsc",
     "dist",
@@ -20,7 +18,7 @@
   ],
   "references": [
     {
-      "path": "../../libs/shared/tsconfig.lib.json"
+      "path": "../../libs/shared/"
     }
   ]
 }

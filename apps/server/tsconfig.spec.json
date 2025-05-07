@@ -2,8 +2,7 @@
   "extends": "./../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./out-tsc/jest",
-    "types": ["jest", "node"],
-    "module": "NodeNext"
+    "types": ["jest", "node"]
   },
   "include": [
     "jest.config.ts",

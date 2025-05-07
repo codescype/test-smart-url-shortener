@@ -9,6 +9,7 @@
     "target": "ESNext",
     "moduleResolution": "NodeNext",
     "module": "NodeNext",
+    "types": ["node"],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,

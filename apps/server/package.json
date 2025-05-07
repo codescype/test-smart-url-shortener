@@ -59,6 +59,7 @@
     "@elysiajs/cors": "1.2.0",
     "@elysiajs/node": "^1.2.6",
     "@elysiajs/swagger": "1.2.2",
+    "@types/node": "~18.16.9",
     "bun-types": "^1.2.12",
     "elysia": "1.2.25",
     "supertest": "^7.1.0",
