@@ -1,4 +1,4 @@
-import { describe, expect, test } from '@jest/globals';
+import { describe, expect } from '@jest/globals';
 import { Elysia } from 'elysia';
 import { treaty } from '@elysiajs/eden';
 
