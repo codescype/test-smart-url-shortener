@@ -1,4 +1,4 @@
-/* eslint-disable */
+ 
 import { readFileSync } from 'fs';
 
 // Reading the SWC compilation config for the spec files
@@ -14,8 +14,17 @@ export default {
   preset: '../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
-    '^.+\\.[tj]s$': ['@swc/jest', swcJestConfig],
+    '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.app.json' }],
   },
+  transformIgnorePatterns: [
+    '/node_modules/(?!elysia|@elysiajs|nanostores)', // Transform ESM dependencies
+  ],
   moduleFileExtensions: ['ts', 'js', 'html'],
+  extensionsToTreatAsEsm: ['.ts'], // Treat `.ts` files as ES Modules
+  testMatch: ['**/*.test.ts', '**/*.spec.ts'],
+  moduleNameMapper: {
+    '^@shortlink/shared$': '<rootDir>/../../../libs/shared/src/index.ts',
+    '^@shortlink/shared/(.*)$': '<rootDir>/../../../libs/shared/src/$1',
+  },
   coverageDirectory: 'test-output/jest/coverage',
 };
