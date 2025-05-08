@@ -1,0 +1,72 @@
+{
+  "name": "@test-smart-url-shortener/server",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "tsx src/main.ts"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "executor": "@nx/esbuild:esbuild",
+        "outputs": [
+          "{options.outputPath}"
+        ],
+        "defaultConfiguration": "production",
+        "options": {
+          "platform": "node",
+          "outputPath": "apps/server/dist",
+          "format": [
+            "cjs"
+          ],
+          "bundle": false,
+          "main": "apps/server/src/main.ts",
+          "tsConfig": "apps/server/tsconfig.app.json",
+          "assets": [
+            "apps/server/src/assets"
+          ],
+          "esbuildOptions": {
+            "sourcemap": true,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        },
+        "configurations": {
+          "development": {},
+          "production": {
+            "esbuildOptions": {
+              "sourcemap": false,
+              "outExtension": {
+                ".js": ".js"
+              }
+            }
+          }
+        }
+      },
+      "test": {
+        "options": {
+          "passWithNoTests": true
+        }
+      }
+    },
+    "implicitDependencies": [
+      "@test-smart-url-shortener/server"
+    ]
+  },
+  "dependencies": {
+    "@elysiajs/cors": "1.2.0",
+    "@elysiajs/node": "^1.2.6",
+    "@elysiajs/swagger": "1.2.2",
+    "@types/node": "~18.16.9",
+    "bun-types": "^1.2.12",
+    "elysia": "1.2.25",
+    "nanostores": "^1.0.1",
+    "supertest": "^7.1.0",
+    "ts-jest": "^29.1.0"
+  },
+  "engines": {
+    "node": ">=v22.15.0"
+  }
+}
