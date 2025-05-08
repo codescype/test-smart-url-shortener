@@ -1,12 +1,12 @@
 import { Elysia } from 'elysia';
+import { node } from '@elysiajs/node';
 import { cors } from '@elysiajs/cors';
 import { swagger } from '@elysiajs/swagger';
-import { node } from '@elysiajs/node';
 import 'dotenv/config';
 
 import routes from './routes/index.js';
 
-import { hostname, port } from '@tsus/shared-lib';
+import { hostname, port } from '@tsus/shared-lib/index.js';
 
 // Setup the Elysia server
 const app = new Elysia({ adapter: node() });
