@@ -33,7 +33,7 @@
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.19.0"
   },
-  "packageManager": "pnpm@8.10.2+sha1.e0b68270e89c817ff88b7be62466a2128c53af02",
+  "packageManager": "pnpm@10.10.0",
   "dependencies": {
     "@elysiajs/eden": "1.2.0",
     "@jest/globals": "^29.7.0",
