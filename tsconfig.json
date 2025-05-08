@@ -8,6 +8,9 @@
     },
     {
       "path": "./libs/shared"
+    },
+    {
+      "path": "./apps/client"
     }
   ]
 }
