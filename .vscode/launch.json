@@ -18,11 +18,35 @@
     },
     {
       "type": "node",
+      "request": "launch",
+      "name": "Debug Client",
+      "runtimeExecutable": "pnpm",
+      "args": ["nx", "run", "client:dev:development"],
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "sourceMaps": true,
+      "skipFiles": ["<node_internals>/**"],
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    {
+      "type": "node",
       "request": "attach",
       "name": "Attach to Server",
       "port": 9229,
       "restart": true,
       "cwd": "${workspaceFolder}/apps/server",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to Client",
+      "port": 9230,
+      "restart": true,
+      "cwd": "${workspaceFolder}/apps/client",
       "skipFiles": ["<node_internals>/**"]
     }
   ]
