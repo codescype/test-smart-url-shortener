@@ -4,13 +4,7 @@
     "jsx": "preserve",
     "noEmit": true,
     "emitDeclarationOnly": false,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "ESNext"],
     "incremental": true,
     "plugins": [
       {
@@ -18,13 +12,18 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"],
+      "@tsus/shared-lib": ["../../libs/shared/src/index"],
+      "@tsus/shared-lib/*": ["../../libs/shared/src/*"],
+      "@tsus/server-app": ["../../apps/server/src/main"],
+      "@tsus/server-app/*": ["../../apps/server/src/*"]
     },
+    "baseUrl": ".",
     "outDir": "dist",
     "rootDir": "src",
-    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
+    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo",
+
+    "moduleResolution": "node"
   },
   "include": [
     "../../apps/client/.next/types/**/*.ts",
@@ -47,5 +46,13 @@
     "eslint.config.js",
     "eslint.config.cjs",
     "eslint.config.mjs"
+  ],
+  "references": [
+    {
+      "path": "../../libs/shared/tsconfig.lib.json"
+    },
+    {
+      "path": "../server/tsconfig.app.json"
+    }
   ]
 }

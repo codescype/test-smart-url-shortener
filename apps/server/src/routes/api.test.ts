@@ -2,7 +2,8 @@ import { describe, expect } from '@jest/globals';
 import { Elysia } from 'elysia';
 import { treaty } from '@elysiajs/eden';
 
-import apiRoutes from './api.js';
+import apiRoutes from './api';
+import { testURLs } from '@tsus/shared-lib/URL/testURLs.data';
 
 // Initialize the Elysia app with the API routes
 const app = new Elysia().use(apiRoutes).get('/hello', () => 'Hello World!');

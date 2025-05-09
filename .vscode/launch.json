@@ -6,7 +6,12 @@
       "request": "launch",
       "name": "Debug Server",
       "runtimeExecutable": "pnpm",
-      "args": ["nx", "run", "server:serve:development", "--preserve-symlinks"],
+      "args": [
+        "nx",
+        "run",
+        "server-app:serve:development",
+        "--preserve-symlinks"
+      ],
       "cwd": "${workspaceFolder}",
       "console": "internalConsole",
       "internalConsoleOptions": "openOnSessionStart",
@@ -21,7 +26,7 @@
       "request": "launch",
       "name": "Debug Client",
       "runtimeExecutable": "pnpm",
-      "args": ["nx", "run", "client:dev:development"],
+      "args": ["nx", "run", "client-app:serve:development"],
       "cwd": "${workspaceFolder}",
       "console": "internalConsole",
       "internalConsoleOptions": "openOnSessionStart",

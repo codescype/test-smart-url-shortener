@@ -5,10 +5,10 @@
     "emitDeclarationOnly": true,
     "importHelpers": true,
     "isolatedModules": true,
-    "lib": ["es2022"],
+    "lib": ["ESNext"],
+    "moduleResolution": "node",
+    "module": "ESNext",
     "target": "ESNext",
-    "moduleResolution": "NodeNext",
-    "module": "NodeNext",
     "types": ["node"],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -22,11 +22,12 @@
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "strict": true,
-    "customConditions": ["development"],
     "baseUrl": ".",
     "paths": {
-      "@tsus/shared-lib": ["libs/shared/src/index.ts"],
-      "@tsus/shared-lib/*": ["libs/shared/src/*"]
+      "@tsus/shared-lib": ["libs/shared/src/index"],
+      "@tsus/shared-lib/*": ["libs/shared/src/*"],
+      "@tsus/server-app": ["apps/server/src/main"],
+      "@tsus/server-app/*": ["apps/server/src/*"]
     }
   }
 }

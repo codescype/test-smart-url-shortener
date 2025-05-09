@@ -3,8 +3,8 @@ import 'dotenv/config';
 import {
   ShortenedURL,
   ShortenedURLService,
-} from '@tsus/shared-lib/ShortenedURL/index.js';
-import { testURLs } from '@tsus/shared-lib/URL/testURLs.data.js';
+} from '@tsus/shared-lib/ShortenedURL';
+import { testURLs } from '@tsus/shared-lib/URL/testURLs.data';
 
 export class ShortenedURLController {
   // Instantiate the URLShortenerService

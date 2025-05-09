@@ -1,6 +1,6 @@
 import { Elysia, t } from 'elysia';
 
-import { ShortenedURLController } from './../controllers/ShortenedURL.controller.js';
+import { ShortenedURLController } from './../controllers/ShortenedURL.controller';
 
 // Instantiate the URLShortenerService
 const shortenedURLController = new ShortenedURLController();

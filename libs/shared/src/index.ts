@@ -1,3 +1,3 @@
-export * from './server/index.js';
-export * from './URL/index.js';
-export * from './ShortenedURL/index.js';
+export * from './server';
+export * from './URL/index';
+export * from './ShortenedURL';
