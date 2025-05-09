@@ -49,5 +49,11 @@
       "cwd": "${workspaceFolder}/apps/client",
       "skipFiles": ["<node_internals>/**"]
     }
+  ],
+  "compounds": [
+    {
+      "name": "Debug Server and Client",
+      "configurations": ["Debug Server", "Debug Client"]
+    }
   ]
 }
