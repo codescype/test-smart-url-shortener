@@ -1,5 +1,5 @@
 import { Elysia } from 'elysia';
-import apiRoutes from './api.js';
+import apiRoutes from './api';
 
 const routes = new Elysia()
   .onError(({ error }) => {

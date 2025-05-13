@@ -94,13 +94,9 @@ export class ShortenedURLService extends URLService {
   }
 
   // Get all URLs with optional search
-  list(search?: string): ShortenedURL[] {
+  list(): ShortenedURL[] {
     const urls = this.shortenedURLStore.get();
-    if (search && search.length >= 3) {
-      return urls.filter((url) =>
-        url.originalURL.toLowerCase().includes(search.toLowerCase())
-      );
-    }
+    
     return urls;
   }
 
