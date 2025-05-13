@@ -6,7 +6,27 @@
       "request": "launch",
       "name": "Debug Server",
       "runtimeExecutable": "pnpm",
-      "args": ["nx", "run", "server:serve:development", "--preserve-symlinks"],
+      "args": [
+        "nx",
+        "run",
+        "server-app:serve:development",
+        "--preserve-symlinks"
+      ],
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "sourceMaps": true,
+      "skipFiles": ["<node_internals>/**"],
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Client",
+      "runtimeExecutable": "pnpm",
+      "args": ["nx", "run", "client-app:serve:development"],
       "cwd": "${workspaceFolder}",
       "console": "internalConsole",
       "internalConsoleOptions": "openOnSessionStart",
@@ -24,6 +44,21 @@
       "restart": true,
       "cwd": "${workspaceFolder}/apps/server",
       "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to Client",
+      "port": 9230,
+      "restart": true,
+      "cwd": "${workspaceFolder}/apps/client",
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug Server and Client",
+      "configurations": ["Debug Server", "Debug Client"]
     }
   ]
 }

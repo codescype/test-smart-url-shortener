@@ -14,17 +14,16 @@ export default {
   preset: '../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
-    '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.app.json' }],
+    '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
-  transformIgnorePatterns: [
-    '/node_modules/(?!elysia|@elysiajs|nanostores)', // Transform ESM dependencies
-  ],
+  // transformIgnorePatterns: [
+  //   '/node_modules/(?!elysia|@elysiajs|nanostores)', // Transform ESM dependencies
+  // ],
   moduleFileExtensions: ['ts', 'js', 'html'],
   extensionsToTreatAsEsm: ['.ts'], // Treat `.ts` files as ES Modules
   testMatch: ['**/*.test.ts', '**/*.spec.ts'],
   moduleNameMapper: {
-    '^@shortlink/shared$': '<rootDir>/../../../libs/shared/src/index.ts',
-    '^@shortlink/shared/(.*)$': '<rootDir>/../../../libs/shared/src/$1',
+    '^(\\.{1,2}/.*)\\.js$': '$1',
   },
-  coverageDirectory: 'test-output/jest/coverage',
+  transformIgnorePatterns: ['/node_modules/(?!|@jest|elysia|@elysiajs|nanostores)'],
 };

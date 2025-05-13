@@ -2,9 +2,9 @@ import { atom } from 'nanostores';
 import { nanoid } from 'nanoid';
 import 'dotenv/config';
 
-import { URLService } from '../URL/URL.service.js';
-import { ShortenedURL } from './ShortenedURL.model.js';
-import { encodedURLPrefix } from './shortenedURL.config.js';
+import { URLService } from '../URL/URL.service';
+import { ShortenedURL } from './ShortenedURL.model';
+import { encodedURLPrefix } from './shortenedURL.config';
 
 export class ShortenedURLService extends URLService {
   // Reactive store for transformed URLs
@@ -94,13 +94,9 @@ export class ShortenedURLService extends URLService {
   }
 
   // Get all URLs with optional search
-  list(search?: string): ShortenedURL[] {
+  list(): ShortenedURL[] {
     const urls = this.shortenedURLStore.get();
-    if (search && search.length >= 3) {
-      return urls.filter((url) =>
-        url.originalURL.toLowerCase().includes(search.toLowerCase())
-      );
-    }
+    
     return urls;
   }
 

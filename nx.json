@@ -40,28 +40,31 @@
       "plugin": "@nx/jest/plugin",
       "options": {
         "targetName": "test"
-      },
-      "exclude": ["apps/server-e2e/**/*"]
+      }
     },
     {
-      "plugin": "@nx/js/typescript",
-      "include": ["libs/shared/*"],
+      "plugin": "@nx/next/plugin",
       "options": {
-        "typecheck": {
-          "targetName": "typecheck"
-        }
-      },
-      "exclude": ["libs/shared/*"]
+        "startTargetName": "start",
+        "buildTargetName": "build",
+        "devTargetName": "serve",
+        "serveStaticTargetName": "serve-static",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
     }
   ],
   "targetDefaults": {
-    "@nx/esbuild:esbuild": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
-    },
     "test": {
       "dependsOn": ["^build"]
+    }
+  },
+  "generators": {
+    "@nx/next": {
+      "application": {
+        "style": "css",
+        "linter": "eslint"
+      }
     }
   }
 }

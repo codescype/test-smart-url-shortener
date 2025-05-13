@@ -1,3 +1,3 @@
-export * from './shortenedURL.config.js';
-export * from './ShortenedURL.model.js';
-export * from './ShortenedURL.service.js';
+export * from './shortenedURL.config';
+export * from './ShortenedURL.model';
+export * from './ShortenedURL.service';

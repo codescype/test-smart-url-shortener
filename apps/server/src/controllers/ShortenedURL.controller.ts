@@ -3,8 +3,8 @@ import 'dotenv/config';
 import {
   ShortenedURL,
   ShortenedURLService,
-} from '@tsus/shared-lib/ShortenedURL/index.js';
-import { testURLs } from '@tsus/shared-lib/URL/testURLs.data.js';
+} from '@tsus/shared-lib/ShortenedURL';
+import { testURLs } from '@tsus/shared-lib/URL/testURLs.data';
 
 export class ShortenedURLController {
   // Instantiate the URLShortenerService
@@ -17,7 +17,7 @@ export class ShortenedURLController {
       this.shortenedURLService.encode(url);
     });
 
-    console.info('ShortenedURLController initialized with test URLs');
+    console.info('🛂 ShortenedURLController initialized with test URLs');
   }
 
   // Encode and store URL
@@ -56,10 +56,10 @@ export class ShortenedURLController {
     }
   }
 
-  // Get all URLs with optional search
-  list(search?: string): ShortenedURL[] | null {
+  // Get all URLs
+  list(): ShortenedURL[] | null {
     try {
-      return this.shortenedURLService.list(search);
+      return this.shortenedURLService.list();
     } catch (error) {
       console.error('Error listing URLs:', error);
       return null;

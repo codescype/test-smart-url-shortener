@@ -1,0 +1,21 @@
+{
+  "name": "shared-lib",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "main": "libs/shared/src/index.ts",
+        "outputPath": "libs/shared/dist",
+        "tsConfig": "libs/shared/tsconfig.lib.json"
+      }
+    }
+  },
+  "tags": ["scope:general"]
+}

@@ -1,2 +1,2 @@
-export * from './URL.service.js';
-export * from './testURLs.data.js';
+export * from './URL.service';
+export * from './testURLs.data';

@@ -1,6 +1,7 @@
 import { Elysia, t } from 'elysia';
 
-import { ShortenedURLController } from './../controllers/ShortenedURL.controller.js';
+import { ShortenedURLController } from './../controllers/ShortenedURL.controller';
+import { apiPath, shortenedUrlAPISearchPath } from '@tsus/shared-lib';
 
 // Instantiate the URLShortenerService
 const shortenedURLController = new ShortenedURLController();
@@ -14,7 +15,7 @@ const apiRoutes = new Elysia()
       message: error,
     };
   })
-  .group('/api', (app) => {
+  .group(apiPath, (app) => {
     return app
       .post(
         '/encode',
@@ -38,6 +39,7 @@ const apiRoutes = new Elysia()
 
           // Return 404 if the URL is not found
           if (!decodedURL) {
+            ;
             return error(404, 'URL not found');
           }
 
@@ -46,7 +48,7 @@ const apiRoutes = new Elysia()
         },
         { body: t.Object({ url: t.String() }) }
       )
-      .get('/statistic/:encodedURLPath', ({ params, error }) => {
+      .get(`${shortenedUrlAPISearchPath}/:encodedURLPath`, ({ params, error }) => {
         const shortenedURL = shortenedURLController.getStats(
           params.encodedURLPath
         );
@@ -59,19 +61,22 @@ const apiRoutes = new Elysia()
         // Return the shortened URL data as JSON
         return { ...shortenedURL };
       })
-      .get('/list', ({ error }) => {
-        const shortenedURLs = shortenedURLController.list();
+      .get(
+        '/list',
+        ({ error }) => {
+          const shortenedURLs = shortenedURLController.list();
 
-        // Return 404 if the URLs are not found
-        if (!shortenedURLs) {
-          return error(404, 'URL not found');
+          // Return 404 if the URLs are not found
+          if (!shortenedURLs) {
+            return error(404, 'URL not found');
+          }
+
+          // Return the shortened URL data as JSON
+          return [...shortenedURLs];
         }
-
-        // Return the shortened URL data as JSON
-        return [...shortenedURLs];
-      });
+      );
   })
-  .get('/:encodedURLPath', ({ params, error, redirect }) => {
+  .get('/:encodedURLPath', ({ params, error }) => {
     const shortenedURL = shortenedURLController.getStats(params.encodedURLPath);
 
     // Return 404 if the URL is not found
@@ -79,8 +84,8 @@ const apiRoutes = new Elysia()
       return error(404, 'URL not found');
     }
 
-    // Redirect to the original URL
-    return redirect(shortenedURL.originalURL);
+    // Return the shortened URL data as JSON
+    return { ...shortenedURL };
   });
 
 export default apiRoutes;
