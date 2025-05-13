@@ -1,2 +1,10 @@
-packages: 
-  - "packages/*"
+packages:
+  - 'apps/*'
+  - 'libs/*'
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - '@swc/core'
+  - esbuild
+  - nx
+  - sharp
+  - unrs-resolver

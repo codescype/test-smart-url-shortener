@@ -1,0 +1,28 @@
+{
+  "name": "@tsus/server-app",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@elysiajs/cors": "1.2.0",
+    "@elysiajs/node": "^1.2.6",
+    "@elysiajs/swagger": "1.2.2",
+    "@tsus/shared-lib": "workspace:*",
+    "@types/node": "~18.16.9",
+    "bun-types": "^1.2.12",
+    "elysia": "1.2.25",
+    "nanostores": "^1.0.1",
+    "supertest": "^7.1.0",
+    "ts-jest": "^29.1.0"
+  },
+  "engines": {
+    "node": ">=v22.15.0"
+  }
+}

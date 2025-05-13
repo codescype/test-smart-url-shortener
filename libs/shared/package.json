@@ -1,0 +1,22 @@
+{
+  "name": "@tsus/shared-lib",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "engines": {
+    "node": ">=v22.15.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0",
+    "nanostores": "^1.0.1",
+    "nanoid": "^5.1.5",
+    "dotenv": "^16.5.0"
+  }
+}
