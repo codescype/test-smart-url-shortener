@@ -1,7 +1,7 @@
 {
   "extends": "./../../tsconfig.base.json",
   "compilerOptions": {
-    "rootDir": "./src",
+    "rootDir": "../..",
     "outDir": "./dist",
     "types": ["node", "jest"],
     "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo"
