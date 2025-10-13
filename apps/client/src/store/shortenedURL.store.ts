@@ -1,41 +1,39 @@
 import { create } from 'zustand';
 
 import {
-  apiURL,
   ShortenedURL,
   URLService,
 } from '@tsus/shared-lib';
-console.log(`🚨 Server should be running at ${apiURL}`);
+import { callAPIServer } from '@/utils/apiServer';
 
-// Set up the API call function to make API calls to the server
-const apiCall = async (endpointPath: string, options?: RequestInit) => {
-  const res = await fetch(`${apiURL}${endpointPath}`, options);
-  const data = await res.json();
-
-  console.info(`∴ Received a data ${data}`);
-
-  if (data.error) throw new Error(data.error);
-
-  return data;
-};
-
-// Define the state and actions for the shortened URL store
-interface UrlState {
+// Define the states, setters, and actions for the shortened URL store
+interface ShortenedURLStore {
+  // States
   shortenedURLs: ShortenedURL[];
-  search: string;
+  query: string;
+
+  // Setters
+  setQuery: (query: string) => void;
+
+  // Actions
   encodeUrl: (longUrl: string) => Promise<string>;
   decodeUrl: (shortPath: string) => Promise<string>;
-  setSearch: (search: string) => void;
-  fetchUrls: (search?: string) => Promise<void>;
+  fetchUrls: (query?: string) => Promise<void>;
   validateUrl: (url: string) => boolean;
 }
 
-export const useShortenedURLStore = create<UrlState>((set) => ({
+export const useShortenedURLStore = create<ShortenedURLStore>((set) => ({
+  // States
   shortenedURLs: [],
-  search: '',
+  query: '',
+
+  // Setters
+  setQuery: (searchQuery) => set({ query: searchQuery }),
+
+  // Actions
   encodeUrl: async (originalURL) => {
     // Try to encode the URL
-    const shortenedURL: ShortenedURL = await apiCall(
+    const shortenedURL: ShortenedURL = await callAPIServer(
       '/encode',
       {
         method: 'POST',
@@ -49,7 +47,7 @@ export const useShortenedURLStore = create<UrlState>((set) => ({
   },
   decodeUrl: async (encodedURL) => {
     // Try to encode the URL
-    const shortenedURL: ShortenedURL = await apiCall(
+    const shortenedURL: ShortenedURL = await callAPIServer(
       '/decode',
       {
         method: 'POST',
@@ -61,10 +59,9 @@ export const useShortenedURLStore = create<UrlState>((set) => ({
     // return the shortened URL
     return shortenedURL.originalURL;
   },
-  setSearch: (search) => set({ search }),
   fetchUrls: async () => {
     // Try to encode the URL
-    const shortenedURLs: ShortenedURL[] = await apiCall(
+    const shortenedURLs: ShortenedURL[] = await callAPIServer(
       '/list'
     );
 
